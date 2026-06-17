@@ -243,32 +243,26 @@ export default function Apply() {
       {/* Premium Tab Buttons */}
       <div className="flex bg-zinc-950 p-1 rounded-2xl border border-zinc-800 max-w-xs sm:max-w-md mx-auto mb-10 shadow-lg relative z-20">
         <button
-          onClick={() => {
-            setActiveTab("dashboard");
-            showToast("Career Dashboard", "info", "Displaying your active placement checklist and status.");
-          }}
+          onClick={() => setActiveTab("dashboard")}
           className={cn(
             "flex-1 py-3 px-4 rounded-xl text-xs font-mono font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2 cursor-pointer select-none",
-            activeTab === "dashboard" 
-              ? "bg-brand-teal text-[#050C1A] shadow-md" 
+            activeTab === "dashboard"
+              ? "bg-brand-teal text-[#050C1A] shadow-md"
               : "text-zinc-550 hover:text-white"
           )}
         >
-          <Milestone size={14} /> My Dashboard
+          <Milestone size={14} /> My Applications
         </button>
         <button
-          onClick={() => {
-            setActiveTab("onboarding");
-            showToast("Onboarding Setup", "info", "Loading modular voice-fill onboarding sequence.");
-          }}
+          onClick={() => { setActiveTab("onboarding"); setShowStandardForm(true); }}
           className={cn(
             "flex-1 py-3 px-4 rounded-xl text-xs font-mono font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2 cursor-pointer select-none",
-            activeTab === "onboarding" 
-              ? "bg-brand-teal text-[#050C1A] shadow-md" 
+            activeTab === "onboarding"
+              ? "bg-brand-teal text-[#050C1A] shadow-md"
               : "text-zinc-550 hover:text-white"
           )}
         >
-          <Mic size={14} /> Setup Wizard
+          <Mic size={14} /> Apply Now
         </button>
       </div>
 
@@ -281,7 +275,7 @@ export default function Apply() {
             exit={{ opacity: 0, y: -15 }}
             transition={{ duration: 0.25 }}
           >
-            <CandidateDashboard />
+            <CandidateDashboard onStartApply={() => { setActiveTab("onboarding"); setShowStandardForm(true); }} />
           </motion.div>
         ) : (
           <motion.div
