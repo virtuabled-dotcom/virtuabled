@@ -166,6 +166,18 @@ export default function ManagedBpo() {
         </div>
 
       </div>
+
+      {/* CTA */}
+      <div className="bg-gradient-to-r from-brand-teal/10 to-transparent border-t border-zinc-800 py-20 px-6">
+        <div className="max-w-3xl mx-auto text-center space-y-6">
+          <h2 className="text-2xl md:text-3xl font-display font-light text-white">Ready to run a remote-first disability BPO?</h2>
+          <p className="text-zinc-400 text-sm font-light leading-relaxed">Let us handle the workspace, onboarding, and compliance. You get the output.</p>
+          <a href="https://cal.com/heferon-eugene/30min" target="_blank" rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-brand-teal text-[#0a0a0a] font-bold uppercase text-xs tracking-widest rounded-xl hover:bg-white transition-colors">
+            Book a BPO Consultation
+          </a>
+        </div>
+      </div>
     </div>
     </div>
   );

@@ -196,6 +196,22 @@ export default function WhyWeDoIt() {
         </div>
 
       </div>
+
+      {/* CTA */}
+      <div className="bg-[#060B13] border-t border-zinc-800 py-20 px-6">
+        <div className="max-w-3xl mx-auto text-center space-y-6">
+          <h2 className="text-2xl md:text-3xl font-display font-light text-white">Join the movement</h2>
+          <p className="text-zinc-400 text-sm font-light leading-relaxed">Read the full story behind why Virtuabled exists — then be part of what comes next.</p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/genesis" className="inline-flex items-center justify-center gap-2 px-8 py-4 border border-brand-teal text-brand-teal font-bold uppercase text-xs tracking-widest rounded-xl hover:bg-brand-teal hover:text-[#0a0a0a] transition-colors">
+              Read the Genesis
+            </a>
+            <a href="/apply" className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-brand-teal text-[#0a0a0a] font-bold uppercase text-xs tracking-widest rounded-xl hover:bg-white transition-colors">
+              Apply Now
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

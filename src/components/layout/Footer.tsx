@@ -34,37 +34,9 @@ export function Footer() {
             {/* Transparent SVG Logo icon with subtle backdrop-blur and glassmorphic frame */}
             <span className="relative w-11 h-11 p-1.5 rounded-xl bg-white/[0.03] backdrop-blur-[4px] border border-white/[0.06] shadow-[0_4px_24px_rgba(0,0,0,0.15)] group-hover:bg-white/[0.08] group-hover:border-white/[0.12] transition-all duration-300 flex items-center justify-center shrink-0">
               <svg viewBox="0 0 100 100" className="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                  <linearGradient id="footer-body-grad" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stopColor="#14b8a6" />
-                    <stop offset="100%" stopColor="#0d9488" />
-                  </linearGradient>
-                  <radialGradient id="footer-sun-glow" cx="50%" cy="50%" r="50%">
-                    <stop offset="0%" stopColor="#fb923c" />
-                    <stop offset="40%" stopColor="#f59e0b" />
-                    <stop offset="100%" stopColor="#b45309" />
-                  </radialGradient>
-                  <filter id="footer-glow-filter" x="-25%" y="-25%" width="150%" height="150%">
-                    <feGaussianBlur stdDeviation="3.5" result="blur" />
-                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
-                  </filter>
-                </defs>
-                
-                {/* Silhouette - clean vector representation of human profile matching image */}
-                <circle cx="50" cy="40" r="14" fill="url(#footer-body-grad)" />
-                <path d="M 26,76 C 26,61 36,56 50,56 C 64,56 74,61 74,76 Z" fill="url(#footer-body-grad)" />
-                
-                {/* Orbit Ellipse & Bodies tilted at -15 deg */}
-                <g transform="translate(50, 56) rotate(-15)">
-                  <ellipse cx="0" cy="0" rx="38" ry="15" stroke="#14b8a6" strokeWidth="2.5" fill="none" className="opacity-95" />
-                  
-                  {/* Glowing Sun (Big sphere) */}
-                  <circle cx="27" cy="-10" r="7" fill="url(#footer-sun-glow)" filter="url(#footer-glow-filter)" />
-                  
-                  {/* Tiny Gold Dots */}
-                  <circle cx="-37" cy="-2" r="3" fill="#fbbf24" />
-                  <circle cx="29" cy="10" r="3" fill="#fbbf24" />
-                </g>
+                <path d="M14 26 L36 74 L58 26 L80 74" stroke="#18B0AD" strokeWidth="12" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M44 56 L72 56" stroke="#F79532" strokeWidth="11" strokeLinecap="round"/>
+                <circle cx="58" cy="24" r="7.5" fill="#F79532"/>
               </svg>
             </span>
             <div>
@@ -210,9 +182,17 @@ export function Footer() {
           </a>
         </div>
 
-        <p className="text-center md:text-right font-mono text-[10px] uppercase tracking-widest font-bold">
-          Virtuabled Pty Ltd &copy; {new Date().getFullYear()} &middot; Enterprise Workspace Solutions.
-        </p>
+        <div className="text-center md:text-right space-y-1">
+          <p className="font-mono text-[10px] uppercase tracking-widest font-bold">
+            Virtuabled Pty Ltd &copy; {new Date().getFullYear()} &middot; Enterprise Workspace Solutions.
+          </p>
+          <p className="font-mono text-[9px] text-zinc-600">
+            Developed &amp; maintained by{" "}
+            <a href="https://heferon.tech" target="_blank" rel="noopener noreferrer" className="hover:text-zinc-400 transition-colors">
+              Heferon
+            </a>
+          </p>
+        </div>
       </div>
     </footer>
   );

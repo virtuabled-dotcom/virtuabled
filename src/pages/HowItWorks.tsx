@@ -161,6 +161,20 @@ export default function HowItWorks() {
         {/* Accordion FAQ Component */}
         <FaqSection />
 
+        {/* CTA */}
+        <div className="mt-16 bg-gradient-to-r from-brand-teal/10 to-transparent border border-zinc-800 rounded-2xl py-14 px-8 text-center space-y-6">
+          <h2 className="text-2xl md:text-3xl font-display font-light text-white">Start your compliance journey today</h2>
+          <p className="text-zinc-400 text-sm font-light">From EE audit to first placement — the full pipeline, handled.</p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/apply" className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-brand-teal text-[#0a0a0a] font-bold uppercase text-xs tracking-widest rounded-xl hover:bg-white transition-colors">
+              Apply as a Candidate
+            </a>
+            <a href="/employer-portal" className="inline-flex items-center justify-center gap-2 px-8 py-4 border border-white/10 text-white font-bold uppercase text-xs tracking-widest rounded-xl hover:bg-white/5 transition-colors">
+              Request Employer Access
+            </a>
+          </div>
+        </div>
+
       </div>
     </div>
     </div>

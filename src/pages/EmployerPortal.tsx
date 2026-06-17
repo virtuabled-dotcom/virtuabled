@@ -17,8 +17,6 @@ import { AnalyticsDashboard } from '@/components/portal/AnalyticsDashboard';
 import {
   useLocalStore,
   useSession,
-  DEMO_EMAIL,
-  DEMO_PASSWORD,
   type ComplianceItem,
   type FacilitiesState,
 } from '@/utils/localStore';
@@ -524,99 +522,160 @@ export default function EmployerPortal() {
     }, 2000);
   };
 
-  if (!isLoggedIn) {
-    return (
-      <div className="min-h-screen pt-32 pb-24 px-6 flex items-center justify-center relative overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-brand-teal/5 blur-[120px] rounded-full pointer-events-none animate-pulse duration-[10s]" />
-        
-        <motion.div 
-          initial={{ opacity: 0, y: 30, scale: 0.97 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="w-full max-w-md bg-[#0a0a0a]/90 backdrop-blur-md border border-gray-800/80 rounded-3xl p-8 md:p-10 relative z-10 shadow-2xl"
-        >
-          <div className="text-center mb-10">
-            <motion.div 
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ delay: 0.2, duration: 0.5, type: "spring" }}
-              className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-brand-teal/10 border border-brand-teal/20 text-brand-teal mb-6"
-            >
-              <Lock size={32} />
-            </motion.div>
-            <motion.h1 
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.5 }}
-              className="text-3xl font-display font-light text-white tracking-tight mb-2"
-            >
-              Employer Login
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.5 }}
-              className="text-sm text-zinc-400 font-light"
-            >
-              Demo access — the credentials are prefilled. Anything you change is saved only in this browser.
-            </motion.p>
-          </div>
+  // ── REQUEST ACCESS GATE ─────────────────────────────────────────────────────
+  // Portal access is by approval only. Employers submit a request; the team
+  // reviews and contacts them directly. Full auth system coming in a future phase.
+  const [reqForm, setReqForm] = React.useState({
+    companyName: '', fullName: '', workEmail: '', phone: '',
+    employeeCount: '', primaryNeed: ''
+  });
+  const [reqSubmitting, setReqSubmitting] = React.useState(false);
+  const [reqDone, setReqDone] = React.useState(false);
+  const [reqError, setReqError] = React.useState('');
 
-          <form onSubmit={handleLogin} className="space-y-6">
-            <motion.div 
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.5 }}
-              className="space-y-2"
-            >
-              <label className="text-[10px] uppercase tracking-widest font-bold text-white">Work Email</label>
-              <div className="relative group/input">
-                <Mail size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500 group-focus-within/input:text-brand-teal transition-colors" />
-                <input
-                  type="email"
-                  name="email"
-                  defaultValue={DEMO_EMAIL}
-                  className="w-full bg-[#0d0d0d] border border-gray-800 rounded-lg pl-12 pr-4 py-3 text-sm text-white focus:outline-none focus:border-brand-teal focus:ring-1 focus:ring-brand-teal/25 transition-all duration-300"
-                  required
-                />
-              </div>
-            </motion.div>
-
-            <motion.div 
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.5 }}
-              className="space-y-2"
-            >
-              <label className="text-[10px] uppercase tracking-widest font-bold text-white">Password</label>
-              <div className="relative group/input">
-                <Lock size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500 group-focus-within/input:text-brand-teal transition-colors" />
-                <input
-                  type="password"
-                  name="password"
-                  defaultValue={DEMO_PASSWORD}
-                  className="w-full bg-[#0d0d0d] border border-gray-800 rounded-lg pl-12 pr-4 py-3 text-sm text-white focus:outline-none focus:border-brand-teal focus:ring-1 focus:ring-brand-teal/25 transition-all duration-300"
-                  required
-                />
-              </div>
-            </motion.div>
-            
-            <motion.button 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.7, duration: 0.5 }}
-              type="submit" 
-              className="w-full py-4 mt-4 bg-brand-teal hover:bg-[#14b8a6] hover:shadow-[0_0_20px_rgba(20,184,166,0.2)] text-[#0a0a0a] rounded-lg text-xs uppercase tracking-widest font-bold transition-all duration-300 cursor-pointer"
-            >
-              Sign In to Portal
-            </motion.button>
-          </form>
-        </motion.div>
-      </div>
-    );
-  }
+  const handleRequestAccess = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!reqForm.companyName || !reqForm.fullName || !reqForm.workEmail) {
+      setReqError('Please fill in Company, Name and Work Email.');
+      return;
+    }
+    setReqSubmitting(true);
+    setReqError('');
+    try {
+      const res = await fetch('/api/request-access', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(reqForm),
+      });
+      if (!res.ok) throw new Error('send failed');
+      setReqDone(true);
+    } catch {
+      setReqError('Something went wrong. Please email us directly at partners@virtuabled.com');
+    } finally {
+      setReqSubmitting(false);
+    }
+  };
 
   return (
+    <div className="min-h-screen pt-32 pb-24 px-6 flex items-center justify-center relative overflow-hidden">
+      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-brand-teal/5 blur-[120px] rounded-full pointer-events-none animate-pulse" />
+      <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-brand-amber/3 blur-[100px] rounded-full pointer-events-none" />
+
+      <motion.div
+        initial={{ opacity: 0, y: 30, scale: 0.97 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        className="w-full max-w-lg bg-[#0a0a0a]/90 backdrop-blur-md border border-gray-800/80 rounded-3xl p-8 md:p-10 relative z-10 shadow-2xl"
+      >
+        <AnimatePresence mode="wait">
+          {reqDone ? (
+            <motion.div
+              key="success"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="text-center py-8"
+            >
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-brand-teal/10 border border-brand-teal/20 text-brand-teal mb-6">
+                <CheckCircle2 size={32} />
+              </div>
+              <h1 className="text-3xl font-display font-light text-white tracking-tight mb-3">Request Received</h1>
+              <p className="text-sm text-zinc-400 font-light leading-relaxed mb-6">
+                We'll review your request and get back to you at <strong className="text-white">{reqForm.workEmail}</strong> within 24 hours.
+              </p>
+              <p className="text-xs text-zinc-600 font-mono">In the meantime — <a href="mailto:partners@virtuabled.com" className="text-brand-teal hover:underline">partners@virtuabled.com</a></p>
+            </motion.div>
+          ) : (
+            <motion.div key="form" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+              <div className="text-center mb-8">
+                <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-brand-teal/10 border border-brand-teal/20 text-brand-teal mb-5">
+                  <Building2 size={28} />
+                </div>
+                <h1 className="text-3xl font-display font-light text-white tracking-tight mb-2">Employer Portal</h1>
+                <p className="text-sm text-zinc-400 font-light">Access is by approval. Submit your details and we'll be in touch within 24 hours.</p>
+              </div>
+
+              <form onSubmit={handleRequestAccess} className="space-y-5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="space-y-1.5">
+                    <label className="text-[10px] uppercase tracking-widest font-bold text-white">Company Name *</label>
+                    <input type="text" value={reqForm.companyName} onChange={e => setReqForm(p => ({...p, companyName: e.target.value}))}
+                      className="w-full bg-[#0d0d0d] border border-gray-800 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-teal transition-colors"
+                      placeholder="Acme Corp" required />
+                  </div>
+                  <div className="space-y-1.5">
+                    <label className="text-[10px] uppercase tracking-widest font-bold text-white">Your Name *</label>
+                    <input type="text" value={reqForm.fullName} onChange={e => setReqForm(p => ({...p, fullName: e.target.value}))}
+                      className="w-full bg-[#0d0d0d] border border-gray-800 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-teal transition-colors"
+                      placeholder="Jane Smith" required />
+                  </div>
+                </div>
+
+                <div className="space-y-1.5">
+                  <label className="text-[10px] uppercase tracking-widest font-bold text-white">Work Email *</label>
+                  <div className="relative group/input">
+                    <Mail size={15} className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500 group-focus-within/input:text-brand-teal transition-colors" />
+                    <input type="email" value={reqForm.workEmail} onChange={e => setReqForm(p => ({...p, workEmail: e.target.value}))}
+                      className="w-full bg-[#0d0d0d] border border-gray-800 rounded-lg pl-11 pr-4 py-3 text-sm text-white focus:outline-none focus:border-brand-teal transition-colors"
+                      placeholder="jane@company.com" required />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="space-y-1.5">
+                    <label className="text-[10px] uppercase tracking-widest font-bold text-white">Phone</label>
+                    <input type="tel" value={reqForm.phone} onChange={e => setReqForm(p => ({...p, phone: e.target.value}))}
+                      className="w-full bg-[#0d0d0d] border border-gray-800 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-teal transition-colors"
+                      placeholder="+27 xx xxx xxxx" />
+                  </div>
+                  <div className="space-y-1.5">
+                    <label className="text-[10px] uppercase tracking-widest font-bold text-white">Employees</label>
+                    <select value={reqForm.employeeCount} onChange={e => setReqForm(p => ({...p, employeeCount: e.target.value}))}
+                      className="w-full bg-[#0d0d0d] border border-gray-800 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-teal transition-colors">
+                      <option value="">Select range</option>
+                      <option>1–50</option>
+                      <option>51–200</option>
+                      <option>201–500</option>
+                      <option>501–2000</option>
+                      <option>2000+</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div className="space-y-1.5">
+                  <label className="text-[10px] uppercase tracking-widest font-bold text-white">Primary Need</label>
+                  <select value={reqForm.primaryNeed} onChange={e => setReqForm(p => ({...p, primaryNeed: e.target.value}))}
+                    className="w-full bg-[#0d0d0d] border border-gray-800 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-teal transition-colors">
+                    <option value="">Select one</option>
+                    <option>B-BBEE / EEA Compliance</option>
+                    <option>Candidate Placement</option>
+                    <option>Managed BPO Operations</option>
+                    <option>Both compliance and placement</option>
+                  </select>
+                </div>
+
+                {reqError && (
+                  <p className="text-amber-400 font-mono text-[11px] uppercase tracking-wider">{reqError}</p>
+                )}
+
+                <button type="submit" disabled={reqSubmitting}
+                  className="w-full py-4 bg-brand-teal hover:bg-[#14b8a6] disabled:opacity-60 disabled:cursor-not-allowed text-[#0a0a0a] rounded-xl text-xs uppercase tracking-widest font-bold transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer">
+                  {reqSubmitting ? 'Sending…' : <><span>Request Access</span> <ArrowRight size={15} /></>}
+                </button>
+
+                <p className="text-center text-xs text-zinc-600">
+                  Already approved? Email <a href="mailto:partners@virtuabled.com" className="text-brand-teal hover:underline">partners@virtuabled.com</a>
+                </p>
+              </form>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.div>
+    </div>
+  );
+
+  /* ── PORTAL DASHBOARD (invite-only — rendered when real auth is live) ─────── */
+  // eslint-disable-next-line no-unreachable
+  if (false) return (
     <div className="min-h-screen pt-32 pb-24 px-6 max-w-7xl mx-auto flex flex-col md:flex-row gap-8">
       {/* Sidebar Navigation */}
       <div className="w-full md:w-64 shrink-0 space-y-2">

@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import { HeroImage } from "@/components/shared/HeroImage";
 import { motion, AnimatePresence } from "framer-motion";
-import { Mic, ArrowRight, CheckCircle2, Square, Upload, Play, Camera, Milestone } from "lucide-react";
+import { Mic, ArrowRight, CheckCircle2, Square, Upload, Play, Camera, Milestone, Mail, Loader2 } from "lucide-react";
 import { useToast } from "@/components/shared/Toast";
 import { cn } from "@/lib/utils";
 import { CandidateDashboard } from "@/components/CandidateDashboard";
@@ -32,11 +32,16 @@ export default function Apply() {
   
   const [formData, setFormData] = useState({
     fullName: '',
+    email: '',
     role: '',
     skills: '',
     disabilityType: '',
     natureOfDisability: ''
   });
+  const [formErrors, setFormErrors] = useState<Record<string, string>>({});
+  const [cvParsed, setCvParsed] = useState(false);
+  const [cvParsing, setCvParsing] = useState(false);
+  const cvFileRef = useRef<HTMLInputElement>(null);
   const [listeningField, setListeningField] = useState<string | null>(null);
 
   const startListeningElmarie = () => {
@@ -63,6 +68,51 @@ export default function Apply() {
     recognition.onerror = () => setIsListening(false);
 
     recognition.start();
+  };
+
+  const handleCvUpload = async (file: File) => {
+    if (!file) return;
+    setCvParsing(true);
+    try {
+      const text = await file.text();
+      const res = await fetch('/api/parse-cv', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text }),
+      });
+      if (res.ok) {
+        const { profile } = await res.json();
+        setFormData(prev => ({
+          ...prev,
+          fullName: profile.fullName || prev.fullName,
+          role: profile.headlineRole || prev.role,
+          skills: profile.skills?.join(', ') || prev.skills,
+        }));
+        setCvParsed(true);
+        showToast('CV Parsed', 'success', 'Your CV details have been filled in automatically.');
+      }
+    } catch {
+      showToast('Parse Failed', 'error', 'Could not read CV — please fill in manually.');
+    } finally {
+      setCvParsing(false);
+    }
+  };
+
+  const validateStep1 = (): boolean => {
+    const errors: Record<string, string> = {};
+    if (!formData.fullName.trim()) errors.fullName = 'Full name is required';
+    if (!formData.email.trim()) errors.email = 'Email is required';
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) errors.email = 'Enter a valid email address';
+    if (!formData.role.trim()) errors.role = 'Primary role is required';
+    setFormErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
+  const validateStep2 = (): boolean => {
+    const errors: Record<string, string> = {};
+    if (!formData.natureOfDisability.trim()) errors.natureOfDisability = 'Please describe your accommodation needs';
+    setFormErrors(errors);
+    return Object.keys(errors).length === 0;
   };
 
   const startListeningField = (field: string) => {
@@ -335,43 +385,76 @@ export default function Apply() {
               </h3>
             </div>
 
-            <form onSubmit={(e) => { e.preventDefault(); if (activeStep < 3) setActiveStep(activeStep + 1); }}>
+            <form onSubmit={(e) => { e.preventDefault(); if (activeStep === 1 && !validateStep1()) return; if (activeStep === 2 && !validateStep2()) return; if (activeStep < 3) setActiveStep(activeStep + 1); }}>
               {activeStep === 1 && (
                 <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="space-y-6">
                   <div className="space-y-2">
-                    <label htmlFor="full-name-input" className="text-[10px] font-bold text-white uppercase tracking-widest block">Full Name</label>
+                    <label htmlFor="full-name-input" className="text-[10px] font-bold text-white uppercase tracking-widest block">Full Name *</label>
                     <div className="relative">
-                      <input 
+                      <input
                         id="full-name-input"
-                        type="text" 
+                        type="text"
                         value={formData.fullName}
-                        onChange={(e) => setFormData({...formData, fullName: e.target.value})}
-                        className="w-full bg-[#0d0d0d] border border-gray-800 rounded-lg px-4 py-3 pr-10 text-sm text-white focus:outline-none focus:border-brand-teal transition-colors" 
+                        onChange={(e) => { setFormData({...formData, fullName: e.target.value}); setFormErrors(p => ({...p, fullName: ''})); }}
+                        className={`w-full bg-[#0d0d0d] border rounded-lg px-4 py-3 pr-10 text-sm text-white focus:outline-none focus:border-brand-teal transition-colors ${formErrors.fullName ? 'border-red-500' : 'border-gray-800'}`}
                         placeholder="e.g. John Doe"
                       />
                       <button type="button" onClick={() => startListeningField('fullName')} className={`absolute right-3 top-1/2 -translate-y-1/2 transition-colors ${listeningField === 'fullName' ? 'text-brand-coral animate-pulse' : 'text-zinc-500 hover:text-brand-teal'}`}>
                         <Mic size={16} />
                       </button>
                     </div>
+                    {formErrors.fullName && <p className="text-red-400 text-[11px] font-mono">{formErrors.fullName}</p>}
                   </div>
 
                   <div className="space-y-2">
-                    <label htmlFor="primary-role-input" className="text-[10px] font-bold text-white uppercase tracking-widest block">Primary Role</label>
+                    <label htmlFor="email-input" className="text-[10px] font-bold text-white uppercase tracking-widest block">Email Address *</label>
                     <div className="relative">
-                      <input 
+                      <Mail size={15} className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500" />
+                      <input
+                        id="email-input"
+                        type="email"
+                        value={formData.email}
+                        onChange={(e) => { setFormData({...formData, email: e.target.value}); setFormErrors(p => ({...p, email: ''})); }}
+                        className={`w-full bg-[#0d0d0d] border rounded-lg pl-11 pr-4 py-3 text-sm text-white focus:outline-none focus:border-brand-teal transition-colors ${formErrors.email ? 'border-red-500' : 'border-gray-800'}`}
+                        placeholder="you@example.com"
+                      />
+                    </div>
+                    {formErrors.email && <p className="text-red-400 text-[11px] font-mono">{formErrors.email}</p>}
+                  </div>
+
+                  <div className="space-y-2">
+                    <label htmlFor="primary-role-input" className="text-[10px] font-bold text-white uppercase tracking-widest block">Primary Role *</label>
+                    <div className="relative">
+                      <input
                         id="primary-role-input"
-                        type="text" 
+                        type="text"
                         value={formData.role}
-                        onChange={(e) => setFormData({...formData, role: e.target.value})}
-                        className="w-full bg-[#0d0d0d] border border-gray-800 rounded-lg px-4 py-3 pr-10 text-sm text-white focus:outline-none focus:border-brand-teal transition-colors" 
+                        onChange={(e) => { setFormData({...formData, role: e.target.value}); setFormErrors(p => ({...p, role: ''})); }}
+                        className={`w-full bg-[#0d0d0d] border rounded-lg px-4 py-3 pr-10 text-sm text-white focus:outline-none focus:border-brand-teal transition-colors ${formErrors.role ? 'border-red-500' : 'border-gray-800'}`}
                         placeholder="e.g. Senior Frontend Developer"
                       />
                       <button type="button" onClick={() => startListeningField('role')} className={`absolute right-3 top-1/2 -translate-y-1/2 transition-colors ${listeningField === 'role' ? 'text-brand-coral animate-pulse' : 'text-zinc-500 hover:text-brand-teal'}`}>
                         <Mic size={16} />
                       </button>
                     </div>
+                    {formErrors.role && <p className="text-red-400 text-[11px] font-mono">{formErrors.role}</p>}
                   </div>
-                  
+
+                  <div className="space-y-2">
+                    <label htmlFor="skills-input" className="text-[10px] font-bold text-white uppercase tracking-widest block">Key Skills</label>
+                    <div className="relative">
+                      <textarea
+                        id="skills-input"
+                        value={formData.skills}
+                        onChange={(e) => setFormData({...formData, skills: e.target.value})}
+                        className="w-full bg-[#0d0d0d] border border-gray-800 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-teal transition-colors resize-none"
+                        placeholder="e.g. React, TypeScript, Accessibility testing, NVDA"
+                        rows={2}
+                      />
+                    </div>
+                    <p className="text-[10px] text-zinc-600">List 3–5 skills relevant to your role</p>
+                  </div>
+
                   <div className="pt-4 flex justify-end">
                     <button type="submit" className="px-8 py-3 bg-white text-black font-bold uppercase text-xs tracking-widest rounded-lg hover:bg-brand-teal transition-colors flex items-center gap-2">
                       Next Step <ArrowRight size={16} />
@@ -383,35 +466,65 @@ export default function Apply() {
               {activeStep === 2 && (
                 <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="space-y-8">
                   <div className="space-y-2">
+                    <label htmlFor="disability-type-input" className="text-[10px] font-bold text-white uppercase tracking-widest block">Disability Category</label>
+                    <select
+                      id="disability-type-input"
+                      value={formData.disabilityType}
+                      onChange={(e) => setFormData({...formData, disabilityType: e.target.value})}
+                      className="w-full bg-[#0d0d0d] border border-gray-800 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-teal transition-colors"
+                    >
+                      <option value="">Select category</option>
+                      <option>Physical / Mobility</option>
+                      <option>Visual / Low Vision</option>
+                      <option>Hearing / Deaf</option>
+                      <option>Cognitive / Neurological</option>
+                      <option>Multiple Disabilities</option>
+                      <option>Prefer not to say</option>
+                    </select>
+                  </div>
+
+                  <div className="space-y-2">
                     <label htmlFor="accommodations-input" className="text-[10px] font-bold text-white uppercase tracking-widest flex items-center gap-2">
-                      Nature of Disability / Accommodation Requirements
+                      Accommodation Requirements *
                       <button type="button" onClick={() => startListeningField('natureOfDisability')} className={`flex items-center gap-1.5 transition-colors ${listeningField === 'natureOfDisability' ? 'text-brand-coral animate-pulse' : 'text-zinc-500 hover:text-brand-teal'}`}>
-                        <Mic size={14} /> <span className="text-[9px]">Voice Input</span>
+                        <Mic size={14} /> <span className="text-[9px]">Voice</span>
                       </button>
                     </label>
-                    <textarea 
+                    <textarea
                       id="accommodations-input"
-                      rows={3} 
+                      rows={3}
                       value={formData.natureOfDisability}
-                      onChange={(e) => setFormData({...formData, natureOfDisability: e.target.value})}
-                      className="w-full bg-[#0d0d0d] border border-gray-800 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-teal transition-colors resize-none" 
-                      placeholder="Be as specific as possible (e.g. Wheelchair access required, specific screen reader compatibility, quiet workspace needed...)"
+                      onChange={(e) => { setFormData({...formData, natureOfDisability: e.target.value}); setFormErrors(p => ({...p, natureOfDisability: ''})); }}
+                      className={`w-full bg-[#0d0d0d] border rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-teal transition-colors resize-none ${formErrors.natureOfDisability ? 'border-red-500' : 'border-gray-800'}`}
+                      placeholder="e.g. Wheelchair access required, screen reader compatible software, quiet workspace..."
                     />
+                    {formErrors.natureOfDisability && <p className="text-red-400 text-[11px] font-mono">{formErrors.natureOfDisability}</p>}
                   </div>
 
                   <div className="space-y-4">
-                    <label className="text-[10px] font-bold text-white uppercase tracking-widest block">Curriculum Vitae</label>
-                    <div className="border-2 border-dashed border-gray-800 rounded-xl p-8 text-center hover:border-brand-teal/50 transition-colors bg-[#0d0d0d] cursor-pointer group">
-                       <Upload size={24} className="mx-auto mb-3 text-zinc-500 group-hover:text-brand-teal transition-colors" />
-                       <p className="text-sm text-white font-medium mb-1">Click to upload or drag & drop</p>
-                       <p className="text-xs text-zinc-500">PDF or Word document (Max 5MB)</p>
+                    <label className="text-[10px] font-bold text-white uppercase tracking-widest block">
+                      Curriculum Vitae {cvParsed && <span className="text-brand-teal ml-2 normal-case text-[9px]">✓ Auto-filled from CV</span>}
+                    </label>
+                    <div
+                      className="border-2 border-dashed border-gray-800 rounded-xl p-8 text-center hover:border-brand-teal/50 transition-colors bg-[#0d0d0d] cursor-pointer group"
+                      onClick={() => cvFileRef.current?.click()}
+                    >
+                      {cvParsing ? (
+                        <><Loader2 size={24} className="mx-auto mb-3 text-brand-teal animate-spin" /><p className="text-sm text-brand-teal">Parsing CV…</p></>
+                      ) : (
+                        <><Upload size={24} className="mx-auto mb-3 text-zinc-500 group-hover:text-brand-teal transition-colors" />
+                        <p className="text-sm text-white font-medium mb-1">Click to upload or drag & drop</p>
+                        <p className="text-xs text-zinc-500">PDF or TXT (Max 5MB) — we'll auto-fill your profile</p></>
+                      )}
                     </div>
+                    <input ref={cvFileRef} type="file" accept=".pdf,.txt,.doc,.docx" className="hidden"
+                      onChange={(e) => { const f = e.target.files?.[0]; if (f) handleCvUpload(f); }} />
                     <p className="text-[11px] text-zinc-500 font-light text-center">
                       Prefer email? Send your CV to{" "}
                       <a href="mailto:hello@virtuabled.com?subject=CV%20Submission" className="text-brand-teal hover:underline font-medium">hello@virtuabled.com</a>
                     </p>
                   </div>
-                  
+
                   <div className="pt-4 flex justify-between">
                     <button type="button" onClick={() => setActiveStep(1)} className="text-xs font-bold text-zinc-400 hover:text-white uppercase tracking-widest transition-colors">Back</button>
                     <button type="submit" className="px-8 py-3 bg-white text-black font-bold uppercase text-xs tracking-widest rounded-lg hover:bg-brand-teal transition-colors flex items-center gap-2">
@@ -503,15 +616,16 @@ export default function Apply() {
                     <button type="button" onClick={() => setActiveStep(2)} className="text-xs font-bold text-zinc-400 hover:text-white uppercase tracking-widest transition-colors">Back</button>
                     <button type="button" onClick={async () => {
                       const id = generateApplicationId();
+                      const submittedAt = new Date().toISOString();
                       let videoBlobId: string | undefined;
                       if (videoBlobRef.current) {
                         try {
                           videoBlobId = await putBlob(videoBlobRef.current, `video-${id}`);
                         } catch { /* media store unavailable — keep metadata only */ }
                       }
-                      setApplications(prev => [{
+                      const record = {
                         id,
-                        submittedAt: new Date().toISOString(),
+                        submittedAt,
                         fullName: formData.fullName,
                         role: formData.role,
                         skills: formData.skills,
@@ -522,16 +636,25 @@ export default function Apply() {
                         videoDurationSec: videoDuration,
                         photoDataUrl: photoDataUrl ?? undefined,
                         videoBlobId,
-                        status: "submitted",
-                      }, ...prev]);
+                        status: "submitted" as const,
+                      };
+                      setApplications(prev => [record, ...prev]);
+                      // Send email notifications (fire-and-forget; don't block UI)
+                      fetch('/api/apply', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ ...record, email: formData.email, cvParsed }),
+                      }).catch(() => { /* silent — local record already saved */ });
                       showToast(
-                        "Application Saved",
+                        "Application Submitted",
                         "success",
-                        `Application ${id} saved on this device. Track it under My Dashboard.`
+                        `Reference ${id} — check your email for confirmation.`
                       );
                       setActiveStep(1);
                       setShowStandardForm(false);
-                      setFormData({ fullName: '', role: '', skills: '', disabilityType: '', natureOfDisability: '' });
+                      setFormData({ fullName: '', email: '', role: '', skills: '', disabilityType: '', natureOfDisability: '' });
+                      setFormErrors({});
+                      setCvParsed(false);
                       setTranscript("");
                       setVideoRecorded(false);
                       setVideoDuration(null);

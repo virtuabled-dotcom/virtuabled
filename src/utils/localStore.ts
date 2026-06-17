@@ -219,8 +219,6 @@ export function generateApplicationId(): string {
 /* Demo session                                                        */
 /* ------------------------------------------------------------------ */
 
-export const DEMO_EMAIL = "hr@enterprise.com";
-export const DEMO_PASSWORD = "password123";
 const SESSION_TTL_MS = 24 * 60 * 60 * 1000;
 
 export function useSession(): {
@@ -238,21 +236,11 @@ export function useSession(): {
     stored && Date.parse(stored.expiresAt) > Date.now() ? stored : null;
 
   const login = useCallback(
-    (email: string, password: string): boolean => {
-      if (email.trim().toLowerCase() !== DEMO_EMAIL || password !== DEMO_PASSWORD) {
-        return false;
-      }
-      const now = Date.now();
-      setStored({
-        email: DEMO_EMAIL,
-        role: "employer",
-        demo: true,
-        createdAt: new Date(now).toISOString(),
-        expiresAt: new Date(now + SESSION_TTL_MS).toISOString(),
-      });
-      return true;
+    (_email: string, _password: string): boolean => {
+      // Auth is disabled — employer portal requires approval. Returns false always.
+      return false;
     },
-    [setStored]
+    []
   );
 
   const logout = useCallback(() => {

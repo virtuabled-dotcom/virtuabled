@@ -256,6 +256,22 @@ export default function About() {
           </p>
         </div>
       </div>
+
+      {/* CTA */}
+      <div className="bg-[#060B13] border-t border-zinc-800 py-20 px-6">
+        <div className="max-w-3xl mx-auto text-center space-y-6">
+          <h2 className="text-2xl md:text-3xl font-display font-light text-white">Work with us</h2>
+          <p className="text-zinc-400 text-sm font-light leading-relaxed">Partner with Virtuabled — whether you're a candidate ready to be placed, or an employer ready to close your EE gap.</p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="mailto:partners@virtuabled.com" className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-brand-teal text-[#0a0a0a] font-bold uppercase text-xs tracking-widest rounded-xl hover:bg-white transition-colors">
+              Partner with Us
+            </a>
+            <a href="/apply" className="inline-flex items-center justify-center gap-2 px-8 py-4 border border-white/10 text-white font-bold uppercase text-xs tracking-widest rounded-xl hover:bg-white/5 transition-colors">
+              Candidate Apply
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
