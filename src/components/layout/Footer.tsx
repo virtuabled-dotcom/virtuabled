@@ -57,7 +57,7 @@ export function Footer() {
           <h4 className="text-white font-mono font-bold uppercase tracking-wider text-xs">Solutions</h4>
           <ul className="space-y-3 text-sm font-sans font-light">
             <li><Link to="/for-employers" className="hover:text-brand-teal transition-colors">Vetted Placements</Link></li>
-            <li><Link to="/for-employers" className="hover:text-brand-teal transition-colors">Turnkey Operations</Link></li>
+            <li><Link to="/managed-bpo" className="hover:text-brand-teal transition-colors">Managed BPO</Link></li>
             <li><Link to="/for-employers" className="hover:text-brand-teal transition-colors">Compliance Hub</Link></li>
             <li><Link to="/how-it-works" className="hover:text-brand-teal transition-colors">Technical Specs</Link></li>
           </ul>

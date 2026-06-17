@@ -229,7 +229,7 @@ export function Navbar() {
                           <Cpu size={16} />
                         </div>
                         <div>
-                          <h4 className="text-white text-xs font-bold uppercase tracking-wider transition-all duration-300 ease-in-out group-hover/item:text-[#818cf8]">Turnkey Operations</h4>
+                          <h4 className="text-white text-xs font-bold uppercase tracking-wider transition-all duration-300 ease-in-out group-hover/item:text-[#818cf8]">Managed BPO</h4>
                           <p className="text-[11px] text-zinc-400 font-light mt-1.5 group-hover/item:text-zinc-300 transition-all duration-300 ease-in-out leading-relaxed">
                             Fully managed remote workspace: hardware, connectivity, and team onboarding.
                           </p>
@@ -699,9 +699,9 @@ export function Navbar() {
                           onClick={() => setIsMobileMenuOpen(false)}
                           className="block text-zinc-400 text-xs hover:text-white py-1"
                         >
-                          Turnkey Operations
+                          Managed BPO
                         </Link>
-                        <Link 
+                        <Link
                           to="/solutions/the-pipeline"
                           onClick={() => setIsMobileMenuOpen(false)}
                           className="block text-zinc-400 text-xs hover:text-white py-1"
