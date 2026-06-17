@@ -1,10 +1,10 @@
 import React, { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  FileText, HelpCircle, Video, Heart,
+  FileText, HelpCircle, Video,
   ChevronDown, ChevronUp, Play, Square, CheckCircle2,
   Camera, Search, MessageSquare, Send, ArrowRight,
-  Mic, Upload
+  Mic, KeyRound, Clock, UserCheck, Briefcase, Shield
 } from "lucide-react";
 import { useToast } from "@/components/shared/Toast";
 import { useLocalStore, type ApplicationRecord } from "@/utils/localStore";
@@ -263,6 +263,111 @@ export function CandidateDashboard({ onStartApply }: Props) {
               )}
             </div>
           )}
+        </div>
+      </section>
+
+      {/* ── SECTION 1b: What Happens Next — Portal Access Journey ── */}
+      <section aria-labelledby="sec-next-steps">
+        <div className="bg-gradient-to-br from-brand-teal/5 to-indigo-500/5 border border-brand-teal/20 rounded-3xl p-6 shadow-xl">
+          <div className="flex items-center gap-2.5 border-b border-brand-teal/15 pb-4 mb-5">
+            <KeyRound size={16} className="text-brand-teal" aria-hidden />
+            <h2 id="sec-next-steps" className="text-base font-display font-medium text-white">
+              What Happens After You Apply
+            </h2>
+          </div>
+
+          <p className="text-zinc-300 text-sm font-light leading-relaxed mb-6">
+            Every candidate who submits an application is reviewed by our team within <strong className="text-white font-medium">24–48 hours</strong>.
+            Once your profile is verified, we email you your <strong className="text-brand-teal font-medium">candidate portal login credentials</strong> —
+            giving you a private, secure dashboard to track your placement in real time.
+          </p>
+
+          {/* Journey Steps */}
+          <div className="space-y-3" role="list" aria-label="Candidate placement journey">
+            {[
+              {
+                icon: <FileText size={15} aria-hidden />,
+                step: "1",
+                label: "Application Submitted",
+                detail: "Your profile, accommodation requirements, and video intro enter our ATS. You get a reference ID immediately.",
+                done: true,
+                color: "text-brand-teal border-brand-teal/30 bg-brand-teal/10",
+              },
+              {
+                icon: <Clock size={15} aria-hidden />,
+                step: "2",
+                label: "Team Review — 24 to 48 Hours",
+                detail: "Our placement specialists review your profile for role fit, accommodation feasibility, and compliance alignment.",
+                done: false,
+                color: "text-indigo-400 border-indigo-400/30 bg-indigo-500/10",
+              },
+              {
+                icon: <KeyRound size={15} aria-hidden />,
+                step: "3",
+                label: "Portal Login Credentials Emailed",
+                detail: "You receive a secure login link by email. Your candidate portal shows live placement status, employer match updates, and your accommodation setup checklist.",
+                done: false,
+                color: "text-brand-amber border-brand-amber/30 bg-brand-amber/10",
+                highlight: true,
+              },
+              {
+                icon: <UserCheck size={15} aria-hidden />,
+                step: "4",
+                label: "Employer Matching",
+                detail: "We present your anonymised profile to matched employers. You approve or decline each opportunity via the portal.",
+                done: false,
+                color: "text-indigo-300 border-indigo-300/30 bg-indigo-300/10",
+              },
+              {
+                icon: <Briefcase size={15} aria-hidden />,
+                step: "5",
+                label: "Placement & 90-Day Support",
+                detail: "Once placed, Virtuabled stays with you through 30, 60, and 90-day check-ins. We handle any accommodation escalations with your employer.",
+                done: false,
+                color: "text-emerald-400 border-emerald-400/30 bg-emerald-500/10",
+              },
+            ].map((item, i, arr) => (
+              <div key={item.step} className="flex gap-4" role="listitem">
+                <div className="flex flex-col items-center">
+                  <div className={`w-9 h-9 rounded-full border flex items-center justify-center shrink-0 ${item.color}`}>
+                    {item.done ? <CheckCircle2 size={15} aria-hidden /> : item.icon}
+                  </div>
+                  {i < arr.length - 1 && <div className="w-px flex-1 mt-1 bg-zinc-800" aria-hidden />}
+                </div>
+                <div className={`pb-4 flex-1 ${item.highlight ? "p-3 -mt-1 rounded-2xl border border-brand-amber/20 bg-brand-amber/5" : ""}`}>
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className={`text-[9px] font-mono font-bold uppercase tracking-widest ${item.highlight ? "text-brand-amber" : "text-zinc-500"}`}>
+                      Step {item.step}
+                    </span>
+                    {item.done && (
+                      <span className="text-[8px] font-mono uppercase tracking-wider text-brand-teal bg-brand-teal/10 border border-brand-teal/20 px-1.5 py-0.5 rounded">
+                        Done
+                      </span>
+                    )}
+                    {item.highlight && (
+                      <span className="text-[8px] font-mono uppercase tracking-wider text-brand-amber bg-brand-amber/10 border border-brand-amber/20 px-1.5 py-0.5 rounded animate-pulse">
+                        Key Step
+                      </span>
+                    )}
+                  </div>
+                  <h3 className={`text-sm font-medium mb-1 ${item.highlight ? "text-brand-amber" : "text-white"}`}>{item.label}</h3>
+                  <p className="text-[11px] text-zinc-400 font-light leading-relaxed">{item.detail}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Portal preview callout */}
+          <div className="mt-4 p-4 rounded-2xl bg-zinc-950/60 border border-zinc-800 flex items-start gap-3">
+            <Shield size={16} className="text-brand-teal shrink-0 mt-0.5" aria-hidden />
+            <div>
+              <p className="text-xs font-bold text-white mb-1">Your portal is private and secure.</p>
+              <p className="text-[11px] text-zinc-400 font-light leading-relaxed">
+                Portal credentials are issued only after manual review — not automatically. This protects the integrity of the pipeline for employers and candidates alike.
+                Questions? Email <a href="mailto:hello@virtuabled.com" className="text-brand-teal hover:underline">hello@virtuabled.com</a>.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 

@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import React, { useEffect, Component, ErrorInfo, ReactNode } from "react";
 import { SmoothScrollProvider } from "@/providers/SmoothScroll";
 import { SchemaContextProvider } from "@/utils/SchemaProvider";
@@ -31,7 +31,7 @@ import HowItWorks from "@/pages/HowItWorks";
 import PredictiveMatcherPage from "@/pages/PredictiveMatcherPage";
 import EeaEsgDashboardPage from "@/pages/EeaEsgDashboardPage";
 import VettedPlacements from "@/pages/VettedPlacements";
-import TurnkeyOperations from "@/pages/TurnkeyOperations";
+// TurnkeyOperations removed — /solutions/turnkey-operations redirects to /managed-bpo
 import ThePipeline from "@/pages/ThePipeline";
 import ComplianceHub from "@/pages/ComplianceHub";
 import BbbEeTargets from "@/pages/BbbEeTargets";
@@ -328,7 +328,7 @@ function AppContent() {
             <Route path="/solutions/predictive-matcher" element={<PageWrapper key={location.pathname}><PredictiveMatcherPage /></PageWrapper>} />
             <Route path="/solutions/eea-esg-dashboard" element={<PageWrapper key={location.pathname}><EeaEsgDashboardPage /></PageWrapper>} />
             <Route path="/solutions/vetted-placements" element={<PageWrapper key={location.pathname}><VettedPlacements /></PageWrapper>} />
-            <Route path="/solutions/turnkey-operations" element={<PageWrapper key={location.pathname}><TurnkeyOperations /></PageWrapper>} />
+            <Route path="/solutions/turnkey-operations" element={<Navigate to="/managed-bpo" replace />} />
             <Route path="/solutions/the-pipeline" element={<PageWrapper key={location.pathname}><ThePipeline /></PageWrapper>} />
             <Route path="/solutions/compliance-hub" element={<PageWrapper key={location.pathname}><ComplianceHub /></PageWrapper>} />
             <Route path="/solutions/bbbee-ee-targets" element={<PageWrapper key={location.pathname}><BbbEeTargets /></PageWrapper>} />

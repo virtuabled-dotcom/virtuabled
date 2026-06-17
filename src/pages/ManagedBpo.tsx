@@ -28,7 +28,7 @@ export default function ManagedBpo() {
         >
           <span className="text-brand-teal font-bold tracking-widest uppercase text-xs mb-4 block px-3 py-1 bg-brand-teal/10 border border-brand-teal/20 w-max rounded-md">Enterprise Delivery</span>
           <h1 className="text-4xl md:text-7xl font-display font-light leading-none tracking-tight mb-6 text-white">
-            Turnkey <span className="font-medium italic text-brand-teal">Operations.</span>
+            Managed <span className="font-medium italic text-brand-teal">BPO.</span>
           </h1>
           <p className="text-zinc-400 font-light text-xl leading-relaxed max-w-3xl">
             A frictionless, fully managed enterprise outsourcing model. We source elite disabled professionals, supply bespoke technology, and deliver flawless business output.

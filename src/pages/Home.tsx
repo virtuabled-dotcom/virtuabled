@@ -381,61 +381,51 @@ Same person. More walls. <span className="font-semibold italic text-brand-teal f
           <div className="flex items-center gap-2">
             <span className="w-2.5 h-2.5 rounded-full bg-indigo-500 animate-ping" />
             <span className="w-2 h-2 rounded-full col-span-1" />
-            <h3 className="text-xs font-mono tracking-widest text-zinc-500 uppercase font-bold">Virtuabled Workspace Matching & Active Talents</h3>
+            <h3 className="text-xs font-mono tracking-widest text-zinc-500 uppercase font-bold">Virtuabled Active Placement Pipeline — Roles We Source & Match</h3>
           </div>
           <span className="text-[10px] font-mono text-[#818cf8] bg-indigo-500/10 border border-indigo-500/20 px-2.5 py-0.5 rounded uppercase font-bold animate-pulse">
-            Syncing Live Nodes
+            Now Sourcing
           </span>
         </div>
 
         <div className="flex whitespace-nowrap overflow-x-auto scrollbar-none py-2 gap-8 px-6">
-          <div className="flex gap-8 items-center animate-[marquee_25s_linear_infinite] hover:[animation-play-state:paused]">
-            {[
-              { role: "Senior Java Architect", count: "142 Pros", acc: "Neurodivergent focus layouts", color: "border-indigo-500/30 text-indigo-400 bg-indigo-500/5" },
-              { role: "Data Protection Officer", count: "89 Pros", acc: "Accessible CRM overlays", color: "border-indigo-400/30 text-indigo-300 bg-indigo-400/5" },
-              { role: "AWS Solutions Engineer", count: "115 Pros", acc: "Custom screen-reader configs", color: "border-indigo-300/30 text-indigo-200 bg-indigo-300/5" },
-              { role: "Senior Financial Modeler", count: "96 Pros", acc: "Sip-and-puff custom hardware", color: "border-indigo-500/30 text-indigo-400 bg-indigo-500/5" },
-              { role: "B2B SaaS GTM Strategist", count: "74 Pros", acc: "Dictation-optimized interfaces", color: "border-indigo-400/30 text-indigo-300 bg-indigo-400/5" },
-              { role: "Senior UX Designer", count: "128 Pros", acc: "Screen readers & high-contrast custom inputs", color: "border-indigo-300/30 text-indigo-200 bg-indigo-300/5" },
-              { role: "Technical Sourcing Partner", count: "102 Pros", acc: "ASL interpretation hubs", color: "border-indigo-500/30 text-indigo-400 bg-indigo-500/5" },
-              { role: "Information Security Lead", count: "83 Pros", acc: "Sensory-reduced workstation layouts", color: "border-indigo-400/30 text-indigo-300 bg-indigo-400/5" }
-            ].map((metric, idx) => (
-              <div key={idx} className={`inline-flex flex-col min-w-[280px] p-4.5 rounded-xl border ${metric.color} shadow-sm backdrop-blur-sm transition-all hover:scale-102`}>
-                <div className="flex items-center justify-between mb-1.5">
-                  <span className="text-sm font-medium text-white">{metric.role}</span>
-                  <span className="text-xs font-mono font-bold px-2 py-0.5 bg-black/40 rounded border border-white/5">{metric.count}</span>
-                </div>
-                <div className="text-[11px] text-zinc-400 font-light flex items-center gap-1.5 font-sans">
-                  <span className="w-1.5 h-1.5 rounded-full bg-current" />
-                  Accommodations: {metric.acc}
-                </div>
+          {[
+            [
+              { role: "Senior Java Architect", acc: "Neurodivergent focus layouts", color: "border-indigo-500/30 text-indigo-400 bg-indigo-500/5" },
+              { role: "Data Protection Officer", acc: "Accessible CRM overlays", color: "border-indigo-400/30 text-indigo-300 bg-indigo-400/5" },
+              { role: "AWS Solutions Engineer", acc: "Custom screen-reader configs", color: "border-indigo-300/30 text-indigo-200 bg-indigo-300/5" },
+              { role: "Senior Financial Modeler", acc: "Sip-and-puff custom hardware", color: "border-indigo-500/30 text-indigo-400 bg-indigo-500/5" },
+              { role: "B2B SaaS GTM Strategist", acc: "Dictation-optimized interfaces", color: "border-indigo-400/30 text-indigo-300 bg-indigo-400/5" },
+              { role: "Senior UX Designer", acc: "Screen readers & high-contrast inputs", color: "border-indigo-300/30 text-indigo-200 bg-indigo-300/5" },
+              { role: "Technical Sourcing Partner", acc: "ASL interpretation support", color: "border-indigo-500/30 text-indigo-400 bg-indigo-500/5" },
+              { role: "Information Security Lead", acc: "Sensory-reduced workstation layouts", color: "border-indigo-400/30 text-indigo-300 bg-indigo-400/5" },
+              { role: "Remote Data Analyst", acc: "Voice-controlled analytics suites", color: "border-indigo-300/30 text-indigo-200 bg-indigo-300/5" },
+              { role: "Customer Success Manager", acc: "Adaptive telephony & chat overlays", color: "border-indigo-500/30 text-indigo-400 bg-indigo-500/5" },
+              { role: "QA / Testing Engineer", acc: "Keyboard-only test harnesses", color: "border-indigo-400/30 text-indigo-300 bg-indigo-400/5" },
+              { role: "Back-Office Processor", acc: "High-contrast document workflows", color: "border-indigo-300/30 text-indigo-200 bg-indigo-300/5" },
+            ],
+          ].flatMap((items, loop) =>
+            [items, items].map((set, dup) => (
+              <div
+                key={`loop-${loop}-${dup}`}
+                className="flex gap-8 items-center animate-[marquee_32s_linear_infinite] hover:[animation-play-state:paused] shrink-0"
+                aria-hidden={dup === 1}
+              >
+                {set.map((metric, idx) => (
+                  <div key={idx} className={`inline-flex flex-col min-w-[280px] p-4 rounded-xl border ${metric.color} shadow-sm backdrop-blur-sm transition-all hover:scale-[1.02]`}>
+                    <div className="flex items-center justify-between mb-1.5">
+                      <span className="text-sm font-medium text-white">{metric.role}</span>
+                      <span className="text-[9px] font-mono font-bold px-2 py-0.5 bg-indigo-500/10 text-indigo-300 rounded border border-indigo-500/20 uppercase tracking-wider">Now Matching</span>
+                    </div>
+                    <div className="text-[11px] text-zinc-400 font-light flex items-center gap-1.5 font-sans">
+                      <span className="w-1.5 h-1.5 rounded-full bg-current shrink-0" />
+                      Accommodations: {metric.acc}
+                    </div>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-          {/* Duplicate loop to allow seamless marquee scrolling */}
-          <div className="flex gap-8 items-center animate-[marquee_25s_linear_infinite] hover:[animation-play-state:paused]" aria-hidden="true">
-            {[
-              { role: "Senior Java Architect", count: "142 Pros", acc: "Neurodivergent focus layouts", color: "border-indigo-500/30 text-indigo-400 bg-indigo-500/5" },
-              { role: "Data Protection Officer", count: "89 Pros", acc: "Accessible CRM overlays", color: "border-indigo-400/30 text-indigo-300 bg-indigo-400/5" },
-              { role: "AWS Solutions Engineer", count: "115 Pros", acc: "Custom screen-reader configs", color: "border-indigo-300/30 text-indigo-200 bg-indigo-300/5" },
-              { role: "Senior Financial Modeler", count: "96 Pros", acc: "Sip-and-puff custom hardware", color: "border-indigo-500/30 text-indigo-400 bg-indigo-500/5" },
-              { role: "B2B SaaS GTM Strategist", count: "74 Pros", acc: "Dictation-optimized interfaces", color: "border-indigo-400/30 text-indigo-300 bg-indigo-400/5" },
-              { role: "Senior UX Designer", count: "128 Pros", acc: "Screen readers & high-contrast custom inputs", color: "border-indigo-300/30 text-indigo-200 bg-indigo-300/5" },
-              { role: "Technical Sourcing Partner", count: "102 Pros", acc: "ASL interpretation hubs", color: "border-indigo-500/30 text-indigo-400 bg-indigo-500/5" },
-              { role: "Information Security Lead", count: "83 Pros", acc: "Sensory-reduced workstation layouts", color: "border-indigo-400/30 text-indigo-300 bg-indigo-400/5" }
-            ].map((metric, idx) => (
-              <div key={`dup-${idx}`} className={`inline-flex flex-col min-w-[280px] p-4.5 rounded-xl border ${metric.color} shadow-sm backdrop-blur-sm transition-all hover:scale-102`}>
-                <div className="flex items-center justify-between mb-1.5">
-                  <span className="text-sm font-medium text-white">{metric.role}</span>
-                  <span className="text-xs font-mono font-bold px-2 py-0.5 bg-black/40 rounded border border-white/5">{metric.count}</span>
-                </div>
-                <div className="text-[11px] text-zinc-400 font-light flex items-center gap-1.5 font-sans">
-                  <span className="w-1.5 h-1.5 rounded-full bg-current" />
-                  Accommodations: {metric.acc}
-                </div>
-              </div>
-            ))}
-          </div>
+            ))
+          )}
         </div>
       </section>
 
