@@ -14,12 +14,12 @@ export function FaqSection() {
   const faqs: FaqItem[] = [
     {
       question: "How do Virtuabled's technical adaptations empower remote placements?",
-      answer: "Virtuabled builds and delivers tailored remote workstations equipped with customized hardware wrappers (e.g., modern screen readers, eye-tracking rigs, sip-and-puff adaptors) while managing recruitment paths, physical logistics, end-to-end SLA compliance, and support via daily administrative check-ins.",
+      answer: "Virtuabled configures assistive software tuned to each professional — modern screen readers, voice control, dictation, and cognitive-focus layouts — while managing recruitment paths, end-to-end SLA compliance, and support via daily administrative check-ins. We provide the people and the software layer; the work runs on standard equipment.",
       icon: <Cpu className="text-brand-teal" size={16} />
     },
     {
-      question: "Is there any financial cost for candidates to configure and receive these workspaces?",
-      answer: "No, candidate workstations are entirely funded by Virtuabled and our partner organizations. We craft custom-adapted systems (including specialized mouse controllers, braille displays, and cognitive layouts) and ship them straight to candidates' homes at zero personal expense. This removes any initial hardware friction.",
+      question: "Is there any cost for candidates to get set up in the assistive software?",
+      answer: "No. The assistive-software configuration — screen readers, dictation, voice control, cognitive layouts — is set up and supported by Virtuabled and our partner organizations at zero personal expense. There is no setup friction for the candidate.",
       icon: <Laptop className="text-brand-coral" size={16} />
     },
     {

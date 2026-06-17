@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 
-const DOMAIN = "https://virtuabled.co.za"; // Standard production domain
+const DOMAIN = "https://www.virtuabled.com"; // Canonical production domain (matches index.html canonical)
 
 const STATIC_ROUTES = [
   "",
@@ -24,7 +24,6 @@ const SOLUTIONS_ROUTES = [
   "/solutions/predictive-matcher",
   "/solutions/eea-esg-dashboard",
   "/solutions/vetted-placements",
-  "/solutions/turnkey-operations",
   "/solutions/the-pipeline",
   "/solutions/compliance-hub",
   "/solutions/bbbee-ee-targets",

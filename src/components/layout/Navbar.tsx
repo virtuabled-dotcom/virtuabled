@@ -219,8 +219,8 @@ export function Navbar() {
                         </div>
                       </Link>
 
-                      <Link 
-                        to="/solutions/turnkey-operations" 
+                      <Link
+                        to="/managed-bpo"
                         onClick={closeDropdown}
                         role="menuitem"
                         className="flex items-start gap-3 p-3 rounded-2xl hover:bg-white/[0.04] transition-all duration-300 ease-in-out group/item focus:outline-none focus:ring-1 focus:ring-[#818cf8]/50"
@@ -231,7 +231,7 @@ export function Navbar() {
                         <div>
                           <h4 className="text-white text-xs font-bold uppercase tracking-wider transition-all duration-300 ease-in-out group-hover/item:text-[#818cf8]">Managed BPO</h4>
                           <p className="text-[11px] text-zinc-400 font-light mt-1.5 group-hover/item:text-zinc-300 transition-all duration-300 ease-in-out leading-relaxed">
-                            Fully managed remote workspace: hardware, connectivity, and team onboarding.
+                            Fully managed remote teams of disabled professionals, with assistive software tuned to each person.
                           </p>
                         </div>
                       </Link>
@@ -694,8 +694,8 @@ export function Navbar() {
                         >
                           Vetted Placements
                         </Link>
-                        <Link 
-                          to="/solutions/turnkey-operations" 
+                        <Link
+                          to="/managed-bpo"
                           onClick={() => setIsMobileMenuOpen(false)}
                           className="block text-zinc-400 text-xs hover:text-white py-1"
                         >

@@ -12,7 +12,7 @@ export function HuntingRadar() {
   const targets = [
     { id: "t1", cx: 120, cy: 90, role: "AWS Engineer", acc: "Screen-Reader Custom", color: "#14b8a6" },
     { id: "t2", cx: 280, cy: 110, role: "Java Architect", acc: "ADHD Shield Environment", color: "#f43f5e" },
-    { id: "t3", cx: 190, cy: 220, role: "UX Designer", acc: "Sip-and-Puff Hardware Map", color: "#f59e0b" },
+    { id: "t3", cx: 190, cy: 220, role: "UX Designer", acc: "Voice & Switch Input Software", color: "#f59e0b" },
     { id: "t4", cx: 340, cy: 190, role: "Financial Modeler", acc: "Eye-Tracking Keying", color: "#14b8a6" },
   ];
 

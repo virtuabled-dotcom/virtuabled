@@ -1,182 +1,176 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://virtuabled.co.za</loc>
-    <lastmod>2026-06-16</lastmod>
+    <loc>https://www.virtuabled.com</loc>
+    <lastmod>2026-06-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://virtuabled.co.za/about</loc>
-    <lastmod>2026-06-16</lastmod>
+    <loc>https://www.virtuabled.com/about</loc>
+    <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://virtuabled.co.za/services</loc>
-    <lastmod>2026-06-16</lastmod>
+    <loc>https://www.virtuabled.com/services</loc>
+    <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://virtuabled.co.za/for-employers</loc>
-    <lastmod>2026-06-16</lastmod>
+    <loc>https://www.virtuabled.com/for-employers</loc>
+    <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://virtuabled.co.za/employer-portal</loc>
-    <lastmod>2026-06-16</lastmod>
+    <loc>https://www.virtuabled.com/employer-portal</loc>
+    <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://virtuabled.co.za/blog</loc>
-    <lastmod>2026-06-16</lastmod>
+    <loc>https://www.virtuabled.com/blog</loc>
+    <lastmod>2026-06-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://virtuabled.co.za/apply</loc>
-    <lastmod>2026-06-16</lastmod>
+    <loc>https://www.virtuabled.com/apply</loc>
+    <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://virtuabled.co.za/privacy</loc>
-    <lastmod>2026-06-16</lastmod>
+    <loc>https://www.virtuabled.com/privacy</loc>
+    <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://virtuabled.co.za/terms</loc>
-    <lastmod>2026-06-16</lastmod>
+    <loc>https://www.virtuabled.com/terms</loc>
+    <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://virtuabled.co.za/accessibility</loc>
-    <lastmod>2026-06-16</lastmod>
+    <loc>https://www.virtuabled.com/accessibility</loc>
+    <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://virtuabled.co.za/why-we-do-it</loc>
-    <lastmod>2026-06-16</lastmod>
+    <loc>https://www.virtuabled.com/why-we-do-it</loc>
+    <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://virtuabled.co.za/genesis</loc>
-    <lastmod>2026-06-16</lastmod>
+    <loc>https://www.virtuabled.com/genesis</loc>
+    <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://virtuabled.co.za/managed-bpo</loc>
-    <lastmod>2026-06-16</lastmod>
+    <loc>https://www.virtuabled.com/managed-bpo</loc>
+    <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://virtuabled.co.za/how-it-works</loc>
-    <lastmod>2026-06-16</lastmod>
+    <loc>https://www.virtuabled.com/how-it-works</loc>
+    <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://virtuabled.co.za/solutions/predictive-matcher</loc>
-    <lastmod>2026-06-16</lastmod>
+    <loc>https://www.virtuabled.com/solutions/predictive-matcher</loc>
+    <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://virtuabled.co.za/solutions/eea-esg-dashboard</loc>
-    <lastmod>2026-06-16</lastmod>
+    <loc>https://www.virtuabled.com/solutions/eea-esg-dashboard</loc>
+    <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://virtuabled.co.za/solutions/vetted-placements</loc>
-    <lastmod>2026-06-16</lastmod>
+    <loc>https://www.virtuabled.com/solutions/vetted-placements</loc>
+    <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://virtuabled.co.za/solutions/turnkey-operations</loc>
-    <lastmod>2026-06-16</lastmod>
+    <loc>https://www.virtuabled.com/solutions/the-pipeline</loc>
+    <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://virtuabled.co.za/solutions/the-pipeline</loc>
-    <lastmod>2026-06-16</lastmod>
+    <loc>https://www.virtuabled.com/solutions/compliance-hub</loc>
+    <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://virtuabled.co.za/solutions/compliance-hub</loc>
-    <lastmod>2026-06-16</lastmod>
+    <loc>https://www.virtuabled.com/solutions/bbbee-ee-targets</loc>
+    <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://virtuabled.co.za/solutions/bbbee-ee-targets</loc>
-    <lastmod>2026-06-16</lastmod>
+    <loc>https://www.virtuabled.com/solutions/facility-audits</loc>
+    <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://virtuabled.co.za/solutions/facility-audits</loc>
-    <lastmod>2026-06-16</lastmod>
+    <loc>https://www.virtuabled.com/solutions/eea-compliance-guide</loc>
+    <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://virtuabled.co.za/solutions/eea-compliance-guide</loc>
-    <lastmod>2026-06-16</lastmod>
+    <loc>https://www.virtuabled.com/solutions/skills-development</loc>
+    <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://virtuabled.co.za/solutions/skills-development</loc>
-    <lastmod>2026-06-16</lastmod>
+    <loc>https://www.virtuabled.com/solutions/reasonable-accommodation</loc>
+    <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://virtuabled.co.za/solutions/reasonable-accommodation</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://virtuabled.co.za/blog?post=accommodations-drive-innovation</loc>
-    <lastmod>2026-06-16</lastmod>
+    <loc>https://www.virtuabled.com/blog?post=accommodations-drive-innovation</loc>
+    <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://virtuabled.co.za/blog?post=quiet-crisis-employment-equity-act</loc>
-    <lastmod>2026-06-16</lastmod>
+    <loc>https://www.virtuabled.com/blog?post=quiet-crisis-employment-equity-act</loc>
+    <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://virtuabled.co.za/blog?post=candidate-spotlight-sarah-botha-systems</loc>
-    <lastmod>2026-06-16</lastmod>
+    <loc>https://www.virtuabled.com/blog?post=candidate-spotlight-sarah-botha-systems</loc>
+    <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://virtuabled.co.za/blog?post=sars-section12h-financial-allowances</loc>
-    <lastmod>2026-06-16</lastmod>
+    <loc>https://www.virtuabled.com/blog?post=sars-section12h-financial-allowances</loc>
+    <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://virtuabled.co.za/blog?post=bbbee-code300-subminimum-scorecard-pitfall</loc>
-    <lastmod>2026-06-16</lastmod>
+    <loc>https://www.virtuabled.com/blog?post=bbbee-code300-subminimum-scorecard-pitfall</loc>
+    <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>

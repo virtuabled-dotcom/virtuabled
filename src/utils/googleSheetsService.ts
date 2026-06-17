@@ -68,7 +68,7 @@ export const saveSheetsConfig = (config: SheetsConfig) => {
  * | MetricName                  | Value |
  * | Professionals Placed        | 247   |
  * | Compliance Targets Achieved | 100   |
- * | Turnkey Operational Gains   | 43    |
+ * | Managed BPO Gains           | 43    |
  * | Total Candidate Count       | 512   |
  */
 export async function fetchLiveStatsFromGoogleSheets(

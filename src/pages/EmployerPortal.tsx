@@ -207,7 +207,7 @@ const CANDIDATES = [
     captions: [
       { time: 1, text: "Guten Tag and hello! I am Thabo. I am a backend systems specialist in Pretoria." },
       { time: 7, text: "I structure secure, highly-optimized Django and FastAPI web services." },
-      { time: 13, text: "I require wheelchair step-free ingress and specialized physical desk layouts." },
+      { time: 13, text: "I work remotely with voice-control and screen-reader software tuned to how I code." },
       { time: 19, text: "I build robust, low-latency API layers and connect high-load PostgreSQL storage." },
       { time: 25, text: "Let's connect your frontend to a rock-solid server architecture!" }
     ]

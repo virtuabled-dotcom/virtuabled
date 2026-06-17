@@ -75,14 +75,14 @@ const TESTIMONIALS = [
   {
     id: 2,
     type: "employer",
-    quote: "Virtuabled's Turnkey Operations solved an impossible structural problem for our JHB office. We couldn't physically adapt our heritage building, but their remote inclusive infrastructure gave us compliance and an elite operational team instantly.",
+    quote: "Virtuabled's Managed BPO solved an impossible structural problem for our JHB office. We couldn't physically adapt our heritage building, but their remote team — each working in software tuned to their disability — gave us compliance and an elite operational team instantly.",
     author: "Marcus van Zyl",
     role: "Chief Operating Officer",
     meta: "Tier 1 Logistics Partner",
     videoThumbnail: "/images/testimonial-marcus.jpeg",
     subtitles: [
       { id: 1, text: "We reached a legal dead-end with physical access audits." },
-      { id: 2, text: "Virtuabled's remote turnkey systems bypassed our heritage site limitations completely." },
+      { id: 2, text: "Virtuabled's remote managed team bypassed our heritage site limitations completely." },
       { id: 3, text: "We achieved compliance metrics while unleashing elite professional output." }
     ]
   },
@@ -394,7 +394,7 @@ Same person. More walls. <span className="font-semibold italic text-brand-teal f
               { role: "Senior Java Architect", acc: "Neurodivergent focus layouts", color: "border-indigo-500/30 text-indigo-400 bg-indigo-500/5" },
               { role: "Data Protection Officer", acc: "Accessible CRM overlays", color: "border-indigo-400/30 text-indigo-300 bg-indigo-400/5" },
               { role: "AWS Solutions Engineer", acc: "Custom screen-reader configs", color: "border-indigo-300/30 text-indigo-200 bg-indigo-300/5" },
-              { role: "Senior Financial Modeler", acc: "Sip-and-puff custom hardware", color: "border-indigo-500/30 text-indigo-400 bg-indigo-500/5" },
+              { role: "Senior Financial Modeler", acc: "Voice & switch-input software", color: "border-indigo-500/30 text-indigo-400 bg-indigo-500/5" },
               { role: "B2B SaaS GTM Strategist", acc: "Dictation-optimized interfaces", color: "border-indigo-400/30 text-indigo-300 bg-indigo-400/5" },
               { role: "Senior UX Designer", acc: "Screen readers & high-contrast inputs", color: "border-indigo-300/30 text-indigo-200 bg-indigo-300/5" },
               { role: "Technical Sourcing Partner", acc: "ASL interpretation support", color: "border-indigo-500/30 text-indigo-400 bg-indigo-500/5" },
@@ -862,7 +862,7 @@ Same person. More walls. <span className="font-semibold italic text-brand-teal f
                       None. Simple platform directory with no custom setups or technical workplace adjustments.
                     </td>
                     <td className="p-5 text-[#818cf8] bg-indigo-500/5 border-x border-slate-800 font-semibold leading-relaxed">
-                      🎯 TURNKEY ENVIRONMENT: Custom tactile, visual, braille screen reads & voice setups matched and configured directly by Virtuabled before onboarding.
+                      🎯 MANAGED SOFTWARE LAYER: Custom screen-reader, voice and cognitive-focus software matched and configured directly by Virtuabled before onboarding.
                     </td>
                   </tr>
 

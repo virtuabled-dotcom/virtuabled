@@ -380,7 +380,7 @@ export default function Services() {
           bgGradient="from-brand-teal/30 via-transparent to-zinc-950"
         />
 
-        {/* Refactored Section 3: Turnkey BPO Operations Track */}
+        {/* Refactored Section 3: Managed BPO Operations Track */}
         <section id="outsource" className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-24">
           <motion.div 
             initial={{ opacity: 0, x: -25 }}
@@ -398,7 +398,7 @@ export default function Services() {
               Total Output Ownership SLA
             </h3>
             <p className="text-zinc-400 text-xs font-light leading-relaxed mb-6 font-sans">
-              Deploy fully off-site work cells. Virtuabled absorbs the spatial construction liabilities, hardware procurement costs, and day-to-day HR tracking overheads. 
+              Deploy a fully remote team. Virtuabled sources and manages the professionals, layers in assistive software tuned to each person, and absorbs the day-to-day HR and management overhead.
             </p>
 
             <div className="space-y-4 border-t border-zinc-900 pt-6">
@@ -418,18 +418,18 @@ export default function Services() {
               Deployment Track B
             </span>
             <h2 className="text-3xl md:text-5.2xl font-display font-light tracking-tight text-white uppercase">
-              Turnkey <span className="font-semibold text-brand-amber">Operations</span>
+              Managed <span className="font-semibold text-brand-amber">BPO</span>
             </h2>
             <p className="text-base text-zinc-350 font-light leading-relaxed">
-              Designed to optimize transformation budgets for enterprises without the spatial accessibility parameters or HR capability to foster adaptive workspaces natively. We construct, house, and operationalize the entire cell off-site.
+              Designed for enterprises without the in-house HR capability to recruit, accommodate and manage disabled professionals natively. We source the people, configure assistive software for each one, and run the team remotely — you receive the output.
             </p>
 
             <div className="grid gap-4 mt-8">
               {[
-                { 
-                  title: "Pre-Adapted Virtual Workplaces", 
-                  desc: "Every remote cell is constructed with advanced ocular mouse pointers, screen VoiceOver synthetics, and POPIA-compliant security pathways before launch.", 
-                  icon: <LayoutDashboard size={20} className="text-brand-amber" /> 
+                {
+                  title: "Per-Person Assistive Software",
+                  desc: "Every professional is set up with the assistive software they need — voice control, screen readers, dictation, focus layouts — plus POPIA-compliant security pathways before launch.",
+                  icon: <LayoutDashboard size={20} className="text-brand-amber" />
                 },
                 { 
                   title: "Comprehensive B-BBEE Audit Support", 
@@ -482,7 +482,7 @@ export default function Services() {
               Technical Specification
             </h3>
             <p className="text-zinc-300 font-light text-xs leading-relaxed">
-              Our architectural white-paper details the secure workspace sandbox infrastructure deployed automatically to each candidate's household. It explains hardware isolation setups, WCAG 2.1 screen overrides, and modern B-BBEE verification codes.
+              Our architectural white-paper details the secure software and access framework behind every placement. It explains encrypted remote connectivity, WCAG 2.1 assistive-software overrides, and modern B-BBEE verification codes.
             </p>
 
             <div className="p-6 bg-zinc-950/40 border border-zinc-850 rounded-2xl space-y-4">

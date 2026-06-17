@@ -259,7 +259,7 @@ export default function Blog() {
             },
             {
               name: "Implement Managed Remote Workplace Solutions",
-              text: "Utilize Virtuabled Turnkey Operations or Vetted Placements to bypass local infrastructure limitations and access adapted professionals gracefully."
+              text: "Utilize Virtuabled Managed BPO or Vetted Placements to bypass local infrastructure limitations and access adapted professionals gracefully."
             }
           ],
           totalTime: "P30D"

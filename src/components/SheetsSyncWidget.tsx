@@ -282,7 +282,7 @@ export function SheetsSyncWidget({ onSyncComplete, showToast }: SheetsSyncWidget
           Set up a spreadsheet with two columns: Column A (MetricName) and Column B (Value). Include keys like 
           <span className="text-zinc-400 font-mono bg-black/40 px-1 py-0.5 rounded mx-1">Professionals Placed</span>, 
           <span className="text-zinc-400 font-mono bg-black/40 px-1 py-0.5 rounded mx-1">Compliance Targets</span>, 
-          <span className="text-zinc-400 font-mono bg-black/40 px-1 py-0.5 rounded mx-1">Turnkey Operational Gains</span>, and 
+          <span className="text-zinc-400 font-mono bg-black/40 px-1 py-0.5 rounded mx-1">Managed BPO Gains</span>, and
           <span className="text-zinc-400 font-mono bg-black/40 px-1 py-0.5 rounded mx-1">Total Candidate Count</span> to sync.
         </div>
       </div>

@@ -118,7 +118,7 @@ export default function HowItWorks() {
                 </span>
                 <h3 className="text-xl font-medium text-white font-display">Ready-To-Deploy Placement Proposals</h3>
                 <p className="text-zinc-400 text-sm font-light leading-relaxed">
-                  Virtuabled's human advocates step in. We contact corporate hiring managers directly with a turnkey proposal: "We have an elite technical professional for your role, complete with a Pre-configured Workstation running accessibility-enabled software. Compliance integration is 100% managed."
+                  Virtuabled's human advocates step in. We contact corporate hiring managers directly with a ready-to-deploy proposal: "We have an elite technical professional for your role, set up in accessibility-enabled software tuned to their disability. Compliance integration is 100% managed."
                 </p>
               </div>
             </div>

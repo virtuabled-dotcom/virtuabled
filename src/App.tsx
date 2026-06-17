@@ -31,7 +31,7 @@ import HowItWorks from "@/pages/HowItWorks";
 import PredictiveMatcherPage from "@/pages/PredictiveMatcherPage";
 import EeaEsgDashboardPage from "@/pages/EeaEsgDashboardPage";
 import VettedPlacements from "@/pages/VettedPlacements";
-// TurnkeyOperations removed — /solutions/turnkey-operations redirects to /managed-bpo
+// Managed BPO lives at /managed-bpo — legacy /solutions/turnkey-operations redirects there
 import ThePipeline from "@/pages/ThePipeline";
 import ComplianceHub from "@/pages/ComplianceHub";
 import BbbEeTargets from "@/pages/BbbEeTargets";
@@ -164,8 +164,8 @@ function RouteSEOUpdater() {
       },
       "/terms": {
         title: "Terms of Service Agreement - Virtuabled",
-        description: "Official legal terms, operational boundaries, and licensing rules for Virtuabled services, remote desks, and enterprise networks.",
-        keywords: "commercial terms, remote desks SLA, corporate service agreement"
+        description: "Official legal terms, operational boundaries, and licensing rules for Virtuabled placement, managed BPO, and assistive-software services.",
+        keywords: "commercial terms, managed BPO SLA, corporate service agreement"
       },
       "/accessibility": {
         title: "Standards-Based Digital Accessibility Commitment - Virtuabled",
@@ -183,19 +183,19 @@ function RouteSEOUpdater() {
         keywords: "Eugene Hefer story, Virgin Active, disability entrepreneur, Virtuabled origins, lived experience"
       },
       "/managed-bpo": {
-        title: "Managed Turnkey remote BPO Operations - Virtuabled",
-        description: "Scale your remote contact center or back-office with fully managed, highly skilled teams utilizing proprietary adaptive workspaces.",
-        keywords: "disability contact center, managed services Africa, accommodated call center, inclusive remote BPO"
+        title: "Managed BPO — Remote Disability Teams - Virtuabled",
+        description: "Scale your remote contact centre or back-office with fully managed teams of qualified professionals with disabilities, supported by assistive software tuned to each person. We provide the staff and the software — you get SLA-backed output and EE compliance.",
+        keywords: "managed BPO South Africa, disability contact centre, inclusive remote BPO, EE compliant outsourcing, assistive software teams"
       },
       "/how-it-works": {
         title: "How It Works: Overcoming Workspace Barriers - Virtuabled",
-        description: "Our structured methodology: candidate discovery, digital desk customization, on-site/off-site technical audits, and POPIA-compliant integration.",
-        keywords: "corporate onboarding pipeline, POPIA disclosure, workspace adapters setup"
+        description: "Our structured methodology: candidate discovery, assistive-software configuration, remote technical onboarding, and POPIA-compliant integration.",
+        keywords: "corporate onboarding pipeline, POPIA disclosure, assistive software setup"
       },
       "/solutions/predictive-matcher": {
         title: "Predictive Workspace Matcher Engine - Virtuabled",
-        description: "Match specific physical adaptations to job task matrices accurately to optimize retention and comfort.",
-        keywords: "predictive accommodation engine, occupational profile, desk adjustments audit"
+        description: "Match the right assistive-software configuration to each role's task matrix accurately to optimise retention and performance.",
+        keywords: "predictive accommodation engine, occupational profile, assistive software matching"
       },
       "/solutions/eea-esg-dashboard": {
         title: "EEA ESG Compliance Dashboard - Virtuabled",
@@ -208,9 +208,9 @@ function RouteSEOUpdater() {
         keywords: "vetted tech candidates, administrative talent database, adaptive specialists pool"
       },
       "/solutions/turnkey-operations": {
-        title: "Turnkey Offsite Managed Operations - Virtuabled",
-        description: "Ready-to-deploy, fully accommodated workforce centers focusing on back-office operations and customer support.",
-        keywords: "turnkey customer service, offsite inclusive BPO, managed services South Africa"
+        title: "Managed BPO — Remote Disability Teams - Virtuabled",
+        description: "Fully managed remote teams of qualified professionals with disabilities for back-office operations and customer support, supported by assistive software. (This page now lives at /managed-bpo.)",
+        keywords: "managed BPO, offsite inclusive BPO, managed services South Africa, EE compliant outsourcing"
       },
       "/solutions/the-pipeline": {
         title: "The Sourcing Discovery Pipeline - Virtuabled",
