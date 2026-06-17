@@ -1,0 +1,10 @@
+{
+  "name": "Virtuabled Platform",
+  "description": "High-velocity BPO and talent network portal connecting disabled professionals with Fortune 500 organizations for immediate compliance and operational excellence.",
+  "requestFramePermissions": [
+    "microphone"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
