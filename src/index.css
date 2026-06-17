@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-display: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  
+  --color-brand-ink: #0B132B; /* Midnight Navy #0B132B */
+  --color-brand-teal: #14B8A6; /* Vibrant Teal #14B8A6 */
+  --color-brand-coral: #00B4D8; /* Accent highlight #00B4D8 */
+  --color-brand-amber: #F59E0B; /* Glowing Amber #F59E0B */
+  --color-brand-orange: #FF9F1C; /* Glowing Orange #FF9F1C */
+  --color-brand-slate-light: #F8FAFC; /* Crisp Slate Light Grey */
+  --color-brand-charcoal: #1E293B; /* Deep Charcoal Text */
+  
+  --color-background: var(--color-brand-ink);
+  --color-foreground: #f8fafc; /* crisp gray-100/50 */
+
+  --scale-97: .97;
+  --scale-101: 1.01;
+  --scale-102: 1.02;
+  --scale-103: 1.03;
+
+  /* In-between color shades used across the design (not in Tailwind's default scale) */
+  --color-zinc-150: #ececee;
+  --color-zinc-350: #bbbbc4;
+  --color-zinc-450: #898992;
+  --color-zinc-550: #62626a;
+  --color-zinc-650: #494950;
+  --color-zinc-750: #333338;
+  --color-zinc-805: #232327;
+  --color-zinc-850: #1f1f23;
+  --color-slate-150: #eaf0f5;
+  --color-slate-350: #b0bccd;
+  --color-slate-550: #56657a;
+  --color-indigo-350: #93a0fa;
+  --color-indigo-450: #7279f5;
+  --color-indigo-650: #493fd8;
+  --color-rose-450: #f75872;
+  --color-gray-850: #18202f;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  overflow-x: hidden;
+  font-family: var(--font-sans);
+  line-height: 1.625; /* WCAG 2.1 AA accessible leading (minimum 1.5x) */
+  letter-spacing: 0.015em; /* Optimized word spacing and tracking for visual clarity */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, .heading-style {
+  letter-spacing: -0.01em !important;
+  line-height: 1.25 !important;
+}
+
+
+/* Hero aurora backdrop — slow Ken-Burns drift so static pages still move */
+@keyframes aurora-drift {
+  0%   { transform: scale(1.08) translate3d(0, 0, 0); }
+  50%  { transform: scale(1.16) translate3d(-2%, -1.5%, 0); }
+  100% { transform: scale(1.08) translate3d(0, 0, 0); }
+}
+.animate-aurora-drift {
+  animation: aurora-drift 32s ease-in-out infinite;
+  transform-origin: center;
+  will-change: transform;
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-aurora-drift {
+    animation: none;
+    transform: scale(1.08);
+  }
+}
+
+p {
+  line-height: 1.65 !important;
+  letter-spacing: 0.01em !important;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-brand-ink);
+}
+::-webkit-scrollbar-thumb {
+  background: #1f2937;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #374151;
+}
+
+/* HIGH CONTRAST MODE (AAA) */
+html.high-contrast, html.high-contrast body {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  --color-brand-teal: #ffff00;
+  --color-brand-coral: #00ffff;
+  --color-brand-amber: #ff00ff;
+}
+
+html.high-contrast * {
+  /* Enforce borders to be visible */
+  border-color: #ffffff !important;
+}
+
+html.high-contrast .text-zinc-400,
+html.high-contrast .text-zinc-500,
+html.high-contrast .text-gray-400,
+html.high-contrast .text-gray-500 {
+  color: #ffffff !important;
+}
+
+html.high-contrast .bg-\[\#0a0a0a\],
+html.high-contrast .bg-\[\#0d0d0d\],
+html.high-contrast .bg-zinc-900,
+html.high-contrast .bg-gray-900 {
+  background-color: #000000 !important;
+}
+
+html.high-contrast .text-brand-teal {
+  color: #ffff00 !important;
+}
+
+html.high-contrast .bg-brand-teal {
+  background-color: #ffff00 !important;
+  color: #000000 !important;
+}
+
+html.high-contrast .border-brand-teal\/30,
+html.high-contrast .border-brand-teal\/20,
+html.high-contrast .border-gray-800 {
+  border-color: #ffffff !important;
+}
