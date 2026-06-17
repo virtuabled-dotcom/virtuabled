@@ -392,7 +392,29 @@ export function Navbar() {
             </AnimatePresence>
           </div>
 
-          {/* Menu Option 2: OUR STORY [Dropdown Layout] */}
+          {/* Menu Option 2: FOR EMPLOYERS [Direct Link] */}
+          <Link
+            to="/for-employers"
+            className={cn(
+              "flex items-center px-4 text-xs font-mono font-bold uppercase tracking-wider transition-colors h-20 outline-none cursor-pointer border-b-2 focus:text-brand-teal focus:border-brand-teal",
+              location.pathname === "/for-employers" ? "text-brand-teal border-brand-teal" : "text-zinc-300 border-transparent hover:text-white"
+            )}
+          >
+            For Employers
+          </Link>
+
+          {/* Menu Option 3: FOR CANDIDATES [Direct Link → Apply] */}
+          <Link
+            to="/apply"
+            className={cn(
+              "flex items-center px-4 text-xs font-mono font-bold uppercase tracking-wider transition-colors h-20 outline-none cursor-pointer border-b-2 focus:text-brand-teal focus:border-brand-teal",
+              location.pathname === "/apply" ? "text-brand-teal border-brand-teal" : "text-zinc-300 border-transparent hover:text-white"
+            )}
+          >
+            For Candidates
+          </Link>
+
+          {/* Menu Option 4: OUR STORY [Dropdown Layout] */}
           <div 
             className="relative"
             onMouseEnter={() => setActiveDropdown("story")}
@@ -466,66 +488,6 @@ export function Navbar() {
             </AnimatePresence>
           </div>
 
-          {/* Menu Option 3: PORTAL ACCESS [Dropdown Layout] */}
-          <div 
-            className="relative"
-            onMouseEnter={() => setActiveDropdown("portal")}
-            onMouseLeave={() => setActiveDropdown(null)}
-          >
-            <button 
-              id="desktop-menu-portal"
-              aria-expanded={activeDropdown === "portal"}
-              aria-haspopup="true"
-              aria-controls="portal-dropdown"
-              className={cn(
-                "flex items-center gap-1.5 px-4 text-xs font-mono font-bold uppercase tracking-wider transition-colors h-20 outline-none cursor-pointer border-b-2 border-transparent focus:text-brand-teal focus:border-brand-teal",
-                activeDropdown === "portal" ? "text-brand-teal border-brand-teal" : "text-zinc-300 hover:text-white"
-              )}
-            >
-              Portal Access
-              <ChevronDown size={12} className={cn("transition-transform duration-200", activeDropdown === "portal" && "rotate-180")} />
-            </button>
-
-            <AnimatePresence>
-              {activeDropdown === "portal" && (
-                <motion.div 
-                  id="portal-dropdown"
-                  role="menu"
-                  aria-labelledby="desktop-menu-portal"
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 10 }}
-                  className="absolute right-0 mt-[2px] w-72 bg-[#0A101D] border border-white/[0.06] shadow-2xl rounded-2xl p-4 space-y-1.5 backdrop-blur-md z-[60] text-left"
-                >
-                  <Link 
-                    to="/apply" 
-                    onClick={closeDropdown}
-                    role="menuitem"
-                    className="flex items-start gap-3 p-3 rounded-xl hover:bg-white/[0.04] transition-all group focus:outline-none"
-                  >
-                    <Users size={16} className="text-[#14b8a6] mt-0.5 shrink-0" />
-                    <div>
-                      <h4 className="text-white text-xs font-bold uppercase tracking-wide">Candidate Channel</h4>
-                      <p className="text-[10px] text-zinc-400 font-light mt-1 group-hover:text-zinc-300">Submit resumes, access skills modules, and view open pools.</p>
-                    </div>
-                  </Link>
-
-                  <Link 
-                    to="/employer-portal" 
-                    onClick={closeDropdown}
-                    role="menuitem"
-                    className="flex items-start gap-3 p-3 rounded-xl hover:bg-white/[0.04] transition-all group focus:outline-none"
-                  >
-                    <Building2 size={16} className="text-[#f59e0b] mt-0.5 shrink-0" />
-                    <div>
-                      <h4 className="text-white text-xs font-bold uppercase tracking-wide">Employer Dashboard</h4>
-                      <p className="text-[10px] text-zinc-400 font-light mt-1 group-hover:text-zinc-300">Evaluate regional candidate pipelines and active physical audits.</p>
-                    </div>
-                  </Link>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
         </nav>
 
         {/* Far Right Action Buttons (High contrast toggle & Primary CTA) */}
@@ -572,7 +534,14 @@ export function Navbar() {
             </button>
           </div>
 
-          <Link 
+          <Link
+            to="/employer-portal"
+            className="text-xs font-mono font-bold uppercase tracking-widest text-zinc-300 hover:text-brand-teal transition-colors px-2 outline-none focus:text-brand-teal focus:ring-2 focus:ring-brand-teal/40 rounded-md"
+          >
+            Login
+          </Link>
+
+          <Link
             to="/for-employers"
             onClick={() => {
               setTimeout(() => {
@@ -582,7 +551,7 @@ export function Navbar() {
             }}
             className="px-6 py-2.5 rounded-full bg-[#f59e0b] hover:bg-[#fb923c] text-[#050C1A] font-bold text-xs font-mono uppercase tracking-widest hover:scale-105 active:scale-95 transition-all duration-200 shadow-[0_0_25px_rgba(245,158,11,0.25)] border border-[#f59e0b]/50 inline-flex items-center gap-2 focus:ring-2 focus:ring-[#f59e0b]/50"
           >
-            Optimize Our Compliance
+            Book a Consultation
           </Link>
         </div>
 
@@ -764,9 +733,27 @@ export function Navbar() {
                 )}
               </div>
 
+              {/* For Employers / For Candidates - direct links */}
+              <div className="flex flex-col">
+                <Link
+                  to="/for-employers"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="w-full text-left text-xs font-mono font-bold uppercase tracking-wider text-zinc-300 hover:text-white py-3 border-b border-white/[0.04]"
+                >
+                  For Employers
+                </Link>
+                <Link
+                  to="/apply"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="w-full text-left text-xs font-mono font-bold uppercase tracking-wider text-zinc-300 hover:text-white py-3 border-b border-white/[0.04]"
+                >
+                  For Candidates
+                </Link>
+              </div>
+
               {/* story section - Accordion layout */}
               <div className="space-y-2">
-                <button 
+                <button
                   onClick={() => setMobileActiveSub(mobileActiveSub === "story" ? null : "story")}
                   aria-expanded={mobileActiveSub === "story"}
                   className="w-full flex items-center justify-between text-left text-xs font-mono font-bold uppercase tracking-wider text-zinc-300 py-3 border-b border-white/[0.04]"
@@ -802,40 +789,20 @@ export function Navbar() {
                 )}
               </div>
 
-              {/* portal section - Accordion layout */}
-              <div className="space-y-2">
-                <button 
-                  onClick={() => setMobileActiveSub(mobileActiveSub === "portal" ? null : "portal")}
-                  aria-expanded={mobileActiveSub === "portal"}
-                  className="w-full flex items-center justify-between text-left text-xs font-mono font-bold uppercase tracking-wider text-zinc-300 py-3 border-b border-white/[0.04]"
+              {/* Employer Login - direct link (gated portal) */}
+              <div className="flex flex-col">
+                <Link
+                  to="/employer-portal"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="w-full text-left text-xs font-mono font-bold uppercase tracking-wider text-zinc-300 hover:text-white py-3 border-b border-white/[0.04]"
                 >
-                  <span>Portal Access</span>
-                  <ChevronDown size={14} className={cn("transition-transform duration-200", mobileActiveSub === "portal" && "rotate-180")} />
-                </button>
-                
-                {mobileActiveSub === "portal" && (
-                  <div className="pl-4 space-y-3 pt-2 pb-2 border-l border-white/5 ml-1">
-                    <Link 
-                      to="/apply" 
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      className="block text-zinc-400 text-xs hover:text-white py-1"
-                    >
-                      Candidate Portal
-                    </Link>
-                    <Link 
-                      to="/employer-portal" 
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      className="block text-zinc-400 text-xs hover:text-white py-1"
-                    >
-                      Employer Portal
-                    </Link>
-                  </div>
-                )}
+                  Employer Login
+                </Link>
               </div>
 
               {/* Primary Call to Action buttons on mobile devices */}
               <div className="pt-6 flex flex-col gap-3">
-                <Link 
+                <Link
                   to="/for-employers"
                   onClick={() => {
                     setIsMobileMenuOpen(false);
@@ -846,7 +813,7 @@ export function Navbar() {
                   }}
                   className="w-full text-center py-3 rounded-full bg-[#f59e0b] text-[#050C1A] font-bold text-xs font-mono uppercase tracking-widest transition-all duration-200 shadow-[0_4px_12px_rgba(245,158,11,0.2)]"
                 >
-                  Optimize Our Compliance
+                  Book a Consultation
                 </Link>
               </div>
 

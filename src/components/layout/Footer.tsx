@@ -56,10 +56,11 @@ export function Footer() {
         <div className="lg:col-span-2 space-y-4">
           <h4 className="text-white font-mono font-bold uppercase tracking-wider text-xs">Solutions</h4>
           <ul className="space-y-3 text-sm font-sans font-light">
-            <li><Link to="/for-employers" className="hover:text-brand-teal transition-colors">Vetted Placements</Link></li>
+            <li><Link to="/for-employers" className="hover:text-brand-teal transition-colors">For Employers</Link></li>
+            <li><Link to="/solutions/vetted-placements" className="hover:text-brand-teal transition-colors">Vetted Placements</Link></li>
             <li><Link to="/managed-bpo" className="hover:text-brand-teal transition-colors">Managed BPO</Link></li>
-            <li><Link to="/for-employers" className="hover:text-brand-teal transition-colors">Compliance Hub</Link></li>
-            <li><Link to="/how-it-works" className="hover:text-brand-teal transition-colors">Technical Specs</Link></li>
+            <li><Link to="/solutions/compliance-hub" className="hover:text-brand-teal transition-colors">Compliance Hub</Link></li>
+            <li><Link to="/services" className="hover:text-brand-teal transition-colors">Focus Sectors</Link></li>
           </ul>
         </div>
 
@@ -67,7 +68,7 @@ export function Footer() {
         <div className="lg:col-span-2 space-y-4">
           <h4 className="text-white font-mono font-bold uppercase tracking-wider text-xs">Portals</h4>
           <ul className="space-y-3 text-sm font-sans font-light">
-            <li><Link to="/employer-portal" className="hover:text-brand-teal transition-colors">Employer Portal</Link></li>
+            <li><Link to="/employer-portal" className="hover:text-brand-teal transition-colors">Employer Login</Link></li>
             <li><Link to="/apply" className="hover:text-brand-teal transition-colors">Candidate Apply</Link></li>
             <li><Link to="/accessibility" className="hover:text-brand-teal transition-colors">Accessibility Statement</Link></li>
             <li><Link to="/privacy" className="hover:text-brand-teal transition-colors">Privacy Policy</Link></li>
